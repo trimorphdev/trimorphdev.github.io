@@ -1,0 +1,11 @@
+body {
+    background-color: #e8e8e8;
+}
+
+@media (min-width: 768px) {
+    .navbar {
+        display: block;
+        width: 60%;
+        margin: auto;
+    }
+}
