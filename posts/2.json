@@ -1,0 +1,8 @@
+{
+    "title": "Deno Depd <b>(TypeScript/Deno)</b>",
+    "path": "md/2.md",
+    "links": {
+        "Github": "https://github.com/trimorphdev/deno-depd",
+        "Deno": "https://deno.land/x/depd"
+    }
+}

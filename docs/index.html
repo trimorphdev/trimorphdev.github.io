@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Trimorph Portal: v2 -->
+        <!-- By Trimorph/Zack -->
+
+        <title>Trimorph's Portfolio</title>
+
+        <!-- Metadata -->
+        <meta name="author" content="Zack Pace">
+        <meta name="tags" content="zack pace, zack, pace, trimorph, portal, trimorph portfolio, trimorph portal, about trimorph, web dev, web development, dev, java, bukkit, spigot, spigot plugins, bukkit plugins">
+        <meta name="description" content="A list of all of the (interesting and/or decent) projects by Trimorph.">
+
+        <!-- Stylesheets -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./css/trimorph.css">
+        <link rel="stylesheet" href="./css/prism.css">
+    </head>
+
+    <body>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark trimorph-dark">
+            <a class="navbar-brand" href="/">
+                <img src="https://cravatar.eu/helmhead/Trimorph/40.png">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav my-2 my-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="https://www.youtube.com/channel/UClDixWliA79i2-TqF2tg0MA">Youtube</a>
+                    </li>
+                    
+                    <li class="nav-item active">
+                        <a class="nav-link" href="https://twitter.com/TrimorphYT">Twitter</a>
+                    </li>
+
+                    <li class="nav-item active">
+                        <a class="nav-link" href="https://github.com/trimorphdev">Github</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Content Section -->
+        <div class="container-fluid trimorph-content">
+            
+                <div class="card">
+                    <h1 class="card-title">BungeeParty <b>(Java/BungeeCord)</b></h1>
+                    <p>BungeeParty is a simple party system I made for my own Minecraft server when I was developing it.  Of course, it is made for BungeeCord, meaning it has cross server support.</p>
+<h2>Commands</h2>
+<p>The BungeeParty plugin includes several commands for managing parties.  I won't go into full detail for the commands since they are listed in the Github <a href="https://github.com/trimorphdev/BungeeParty#readme">README.md file</a>.</p>
+<p>BungeeParty's main command is <code>/p</code>, which can be used to manage parties with its subcommands.</p>
+<h2>Notes</h2>
+<ul>
+<li>As of writing this, to make all players join your server when you are hosting a party, you need to use the <code>/p warp</code> command, players don't automatically warp to your server.  This may change in the future.</li>
+<li>There currently is no way for an adminstrator to &quot;hijack&quot; someone else's party.</li>
+</ul>
+
+
+                    
+                        <a class="btn btn-primary btn-md mt-1 mb-1" href="https://github.com/trimorphdev/BungeeParty">Github</a>
+                    
+                </div>
+            
+                <div class="card">
+                    <h1 class="card-title">Deno Depd <b>(TypeScript/Deno)</b></h1>
+                    <p>Deno Depd is a library for deprecating functions in Deno.  It was largely inspired by the <a href="//www.npmjs.com/package/depd">Depd Node.js package</a>.</p>
+<p>Here's a quick example of it in action:</p>
+<pre><code class="language-ts">import depd from 'https://deno.land/x/depd/mod.ts';
+
+const deprecated = depd('my package name');
+
+const func = deprecated(function myDeprecatedFunction() {
+    console.log('This should output a warning.');
+});
+
+func();
+/*
+=&gt; [WARNING] Package my package name deprecated 'func()'.
+*/
+</code></pre>
+<p>It also has the ability to throw an error when the function is called.</p>
+
+
+                    
+                        <a class="btn btn-primary btn-md mt-1 mb-1" href="https://github.com/trimorphdev/deno-depd">Github</a>
+                    
+                        <a class="btn btn-primary btn-md mt-1 mb-1" href="https://deno.land/x/depd">Deno</a>
+                    
+                </div>
+            
+                <div class="card">
+                    <h1 class="card-title">Trimorph's Portfolio <b>(HTML & Node.js)</b></h1>
+                    <p>Of course, I had to list my own portfolio <em>on</em> my own portfolio!  For this website, I made a simple blog-like static website generator; and the front end I made from scratch, with the help of Bootstrap.</p>
+<p>You can build all of the posts by running the following commands in the project directory:</p>
+<pre><code class="language-sh">npm install
+node build
+</code></pre>
+<p>There was a previous version that didn't have a static website generator that was made in only HTML and CSS, but I decided to re-design the website and give it a nicer look, including a dark theme.</p>
+
+
+                    
+                        <a class="btn btn-primary btn-md mt-1 mb-1" href="https://github.com/trimorphdev/trimorphdev.github.io">Github</a>
+                    
+                </div>
+            
+                <div class="card">
+                    <h1 class="card-title">Ash <b>(Typescript/Deno)</b></h1>
+                    <p>Ash is a web framework made for Deno, with an API inspired by <a href="//laravel.com/">Laravel</a>, which is a PHP web framework.</p>
+<p>A simple example of an Ash application would look like this:</p>
+<pre><code class="language-ts">import { Route, ash } from 'https://deno.land/x/ash/mod.ts';
+
+Route.get('/', () =&gt; {
+    console.log('Hello, world!');
+});
+
+ash.start();
+</code></pre>
+
+
+                    
+                        <a class="btn btn-primary btn-md mt-1 mb-1" href="https://github.com/flameland/ash">Github</a>
+                    
+                        <a class="btn btn-primary btn-md mt-1 mb-1" href="https://deno.land/x/ash">Deno</a>
+                    
+                </div>
+            
+                <div class="card">
+                    <h1 class="card-title">Randomize <b>(Java/Bukkit)</b></h1>
+                    <p>Randomize is a very basic drop randomizer for Minecraft.  Whenever a mob is killed or a block is broken, it drops a random item.  As long as the drop seed doesn't change, the drops will always be the same.  For example, if one dirt block drops a gold block, any other dirt block will also drop a gold block.</p>
+<h2>Notes</h2>
+<ul>
+<li>The plugin doesn't support loot tables, meaning that it can't drop anything like village chest items, etc.</li>
+<li>The plugin allows randomized amounts of drops.</li>
+</ul>
+
+
+                    
+                        <a class="btn btn-primary btn-md mt-1 mb-1" href="https://github.com/trimorphdev/trimorphdev.github.io">Github</a>
+                    
+                </div>
+            
+            <br>
+            <p class="text-muted">Copyright &copy; Zack Pace 2020</p>
+        </div>
+
+        <!-- Scripts -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <script src="./js/prism.js"></script>
+    </body>
+</html>

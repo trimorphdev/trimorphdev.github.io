@@ -1,0 +1,35 @@
+
+
+/* Default dark theme */
+body {
+    background-color: #13161f;
+}
+
+.trimorph-dark {
+    background-color: #1e212e;    
+}
+
+.trimorph-content {
+    display: block;
+
+    width: 60vw;
+    margin-left: auto;
+
+    color: white;
+}
+
+.nav-link {
+    font-family: Arial, Arial, Helvetica, sans-serif;
+    font-weight: 700;
+}
+
+.card {
+    background: none;
+    padding-top: 7px;
+    padding-bottom: 7px;
+
+    border: none;
+    border-bottom: 1px solid #20222b;
+    border-radius: 0px;
+    margin: 0;
+}
