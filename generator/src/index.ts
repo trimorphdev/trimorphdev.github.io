@@ -100,3 +100,4 @@ glob('**/*.md', {
 });
 
 fse.copySync(path.join(public_path, 'css'), path.join(out_path, 'css'));
+fse.copySync(path.join(public_path, 'js'), path.join(out_path, 'js'));
