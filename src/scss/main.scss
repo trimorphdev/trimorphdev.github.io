@@ -1,0 +1,13 @@
+@import "colors";
+@import "font";
+
+@import "navbar";
+@import "body";
+@import "highlight";
+
+// Main colors
+body {
+    background-color: $primary;
+    color: white;
+    font-family: $header;
+}

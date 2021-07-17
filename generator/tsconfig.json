@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "outDir": "../dist",
+        "module": "CommonJS",
+        "strict": true,
+        "noImplicitAny": true,
+        "esModuleInterop": true,
+        "allowJs": true
+    },
+    "include": [ "src/**/*" ],
+    "exclude": [ "**/node_modules/**/*" ]
+}

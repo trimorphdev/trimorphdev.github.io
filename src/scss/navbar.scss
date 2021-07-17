@@ -1,0 +1,27 @@
+.navbar {
+    font-weight: bold;
+    background-color: $primary;
+}
+
+.fixed-navbar {
+    position: sticky;
+    top: 0;
+}
+
+.navbar-content {
+    width: 100%;
+    left: 0;
+}
+
+/*
+.navbar-content {
+    width: 70%;
+    left: 15%;
+}*/
+
+@media only screen and (min-width: 992px) {
+    .navbar-content {
+        width: 50%;
+        left: 25%;
+    }
+}

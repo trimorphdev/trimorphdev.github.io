@@ -1,0 +1,8 @@
+code[class*="language-"] {
+    display: block;
+    background-color: $secondary;
+    color: white;
+    padding: 5px;
+    font-family: $code;
+    font-weight: bold;
+}
