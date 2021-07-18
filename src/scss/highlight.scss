@@ -1,8 +1,15 @@
-code[class*="language-"] {
-    display: block;
-    background-color: $secondary;
+code {
     color: white;
     padding: 5px;
+    background-color: $secondary;
+    border-radius: 3px;
+}
+
+pre > code[class*="language-"] {
+    border-radius: 0px;
+    display: block;
+    background-color: $secondary;
+    padding: 10px;
     font-family: $code;
     font-weight: bold;
 }

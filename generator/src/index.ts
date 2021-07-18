@@ -30,9 +30,12 @@ showdown.extension('highlight', function() {
                         // unescape match to prevent double escaping
                         match = htmlunencode(match);
                         const lang = (left.match(/class=\"([^ \"]+)/) || [])[1];
-                        return left + hljs.highlight(match, {
-                            language: lang
-                        }).value + right;
+                        if (lang)
+                            return left + hljs.highlight(match, {
+                                language: lang
+                            }).value + right;
+                        
+                        return wholeMatch;
                     };
                 return showdown.helper.replaceRecursiveRegExp(text, replacement, left, right, flags);
             }
@@ -44,13 +47,15 @@ showdown.extension('highlight', function() {
 const out_path = path.join(__dirname, '../docs');
 const public_path = path.join(__dirname, '../public');
 const pages_path = path.join(public_path, 'pages');
+const projects_path = path.join(public_path, 'projects');
 const template_path = path.join(public_path, 'index.html');
 
 // Markdown converter
 const converter = new showdown.Converter({
     extensions: [
         'highlight'
-    ]
+    ],
+    tables: true
 });
 
 // EJS Template
@@ -80,6 +85,35 @@ async function render(str: string, out: string) {
     fs.writeFileSync(out, result);
 }
 
+function render_str(config: any, path: string): string {
+    let buttons = [];
+
+    let meta = config.metadata;
+
+    if (meta.github)
+        buttons.push(`
+<a class="btn btn-primary" href="${meta.github}">
+    Source
+</a>`)
+
+    if (config.content.trim().length > 0)
+    buttons.push(`
+    <a class="btn btn-primary" href="${path}">
+    Read More
+    </a>`)
+
+    if (meta.view)
+            buttons.push(`
+    <a class="btn btn-primary" href="${meta.view}">
+        View
+    </a>`)
+
+    return `
+<h2>${meta.title}</h2>
+<p>${meta.description}</p>
+${buttons.join('&nbsp;')}`
+}
+
 if (!fs.existsSync(out_path))
     fs.mkdirSync(out_path);
 
@@ -94,8 +128,8 @@ glob('**/*.md', {
         let basename = path.basename(match).split('.')[0];
         let relative = path.relative(pages_path, filename);
         let final_name = path.join(out_path, path.dirname(relative), basename + '.html');
-        console.log(match, relative, final_name);
-        //fs.mkdirSync(path.dirname(final_name));
+        
+        console.log('[PAGE]   ', match);
 
         let dir = path.dirname(final_name);
         
@@ -104,6 +138,45 @@ glob('**/*.md', {
 
         render(fs.readFileSync(path.join(pages_path, match)).toString(), final_name);
     }
+});
+
+glob('**/*.md', {
+    cwd: projects_path,
+}, (err, matches) => {
+    if (err) throw err;
+
+    let files: string[] = [];
+
+    let path_out = path.join(out_path, 'projects');
+
+    if (!fs.existsSync(path_out))
+        fs.mkdirSync(path_out);
+
+    for (let match of matches) {
+        let filename = path.join(projects_path, match);
+        
+        let basename = path.basename(match).split('.')[0];
+        let relative = path.relative(path.join(projects_path), filename);
+        let final_name = path.join(path_out, path.dirname(relative), basename + '.html');
+
+        console.log('[PROJECT]', match);
+
+        let dir = path.dirname(final_name);
+        
+        if (!fs.existsSync(dir))
+            fs.mkdirSync(dir);
+        
+        let body = fs.readFileSync(path.join(projects_path, match)).toString();
+
+        let config = metadataParser(body);
+        files.push(render_str(config, path.join(path.dirname(relative), basename + '.html')));
+
+        render(fs.readFileSync(filename).toString(), final_name)
+    }
+
+    let p = path.join(path_out, 'index.html');
+
+    render(files.join('<hr>'), p);
 });
 
 fse.copySync(path.join(public_path, 'css'), path.join(out_path, 'css'));
