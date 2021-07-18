@@ -171,7 +171,7 @@ glob('**/*.md', {
         let config = metadataParser(body);
         files.push(render_str(config, path.join(path.dirname(relative), basename + '.html')));
 
-        render(fs.readFileSync(filename).toString(), final_name)
+        render(fs.readFileSync(filename).toString(), final_name.split('.')[0])
     }
 
     let p = path.join(path_out, 'index.html');
