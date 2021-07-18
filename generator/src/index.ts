@@ -95,6 +95,13 @@ glob('**/*.md', {
         let relative = path.relative(pages_path, filename);
         let final_name = path.join(out_path, path.dirname(relative), basename + '.html');
         console.log(match, relative, final_name);
+        //fs.mkdirSync(path.dirname(final_name));
+
+        let dir = path.dirname(final_name);
+        
+        if (!fs.existsSync(dir))
+            fs.mkdirSync(dir);
+
         render(fs.readFileSync(path.join(pages_path, match)).toString(), final_name);
     }
 });
