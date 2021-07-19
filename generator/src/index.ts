@@ -176,10 +176,10 @@ glob('**/*.md', {
 
     let p = path.join(path_out, 'index.html');
 
-    render(`
----
+    render(`---
 title: Projects
 ---
+
 ${files.join('<hr>')}`, p);
 });
 
