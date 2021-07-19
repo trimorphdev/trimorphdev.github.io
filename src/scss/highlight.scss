@@ -1,9 +1,22 @@
+:not(pre) > code {
+    display: inline-block;
+    color: white;
+    padding: 5px;
+    background-color: $secondary;
+    border-radius: 3px;
+    font-family: $code;
+    font-weight: bold;
+    //background-color: $secondary;
+}
+
 pre {
     display: block;
     color: white;
     padding: 5px;
     background-color: $secondary;
     border-radius: 3px;
+    font-family: $code;
+    font-weight: bold;
     //background-color: $secondary;
 }
 
