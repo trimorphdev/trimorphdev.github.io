@@ -1,18 +1,16 @@
-code {
+pre {
+    display: block;
     color: white;
     padding: 5px;
     background-color: $secondary;
     border-radius: 3px;
+    //background-color: $secondary;
 }
 
-pre {
-    display: block;
-    background-color: $secondary;
-}
-
+/*
 pre > code[class*="language-"] {
     border-radius: 0px;
     padding: 10px;
     font-family: $code;
     font-weight: bold;
-}
+}*/
